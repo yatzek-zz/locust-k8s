@@ -5,3 +5,9 @@ Create config map containing tasks:
 Deploy locust master & workers:
 
     kubectl apply -f k8s-locust.yaml
+
+Deploy test app:
+
+    kubectl apply -f locust-test-app/k8s-deployment.yaml
+
+Navigate to Locust master web ui to run tests.
