@@ -40,13 +40,13 @@ spec:
         - name: loc-master-p2
           containerPort: 5558
           protocol: TCP
-        resources:
-          limits:
-            cpu: 100m
-            memory: 128Mi
-          requests:
-            cpu: 100m
-            memory: 128Mi
+#        resources:
+#          limits:
+#            cpu: 100m
+#            memory: 128Mi
+#          requests:
+#            cpu: 100m
+#            memory: 128Mi
       volumes:
       - name: locust-tasks
         configMap:
@@ -86,7 +86,7 @@ metadata:
     name: locust
     role: worker
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       name: locust
@@ -114,13 +114,13 @@ spec:
         volumeMounts:
         - name: locust-tasks
           mountPath: /locust-tasks/
-        resources:
-          limits:
-            cpu: 100m
-            memory: 128Mi
-          requests:
-            cpu: 100m
-            memory: 128Mi
+#        resources:
+#          limits:
+#            cpu: 100m
+#            memory: 128Mi
+#          requests:
+#            cpu: 100m
+#            memory: 128Mi
       volumes:
       - name: locust-tasks
         configMap:
