@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: locust-app-deployment
+ labels:
+   app: locust-app
+spec:
+ replicas: 3
+ selector:
+   matchLabels:
+     app: locust-app
+ template:
+   metadata:
+     labels:
+       app: locust-app
+   spec:
+     containers:
+     - name: locust-app
+       image: yatzek/locust-test-app:latest
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8080
+         name: web
+---
+kind: Service
+apiVersion: v1
+metadata:
+ name: locust-app-svc
+ labels:
+    app: locust-app
+spec:
+ selector:
+   app: locust-app
+ ports:
+ - protocol: TCP
+   port: 80
+   name: web
+   targetPort: 8080
+ type: ClusterIP
